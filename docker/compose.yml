@@ -17,6 +17,5 @@ services:
 
 networks:
   VPNet:
-    ipam:
-     config:
-       - subnet: 172.19.0.0/16
+    name: VPNet
+    external: true

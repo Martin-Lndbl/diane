@@ -6,7 +6,7 @@ from llama_cpp import Llama
 app = Flask("Llama server")
 model = None
 
-@app.route('/llama', methods=['POST'])
+@app.route('/', methods=['POST'])
 def generate_response():
     global model
     
@@ -28,7 +28,7 @@ def generate_response():
             # Create the model if it was not previously created
             if model is None:
                 # Put the location of to the GGUF model that you've download from HuggingFace here
-                model_path = "**path to your llama-2–7b-chat.Q2_K.gguf**"
+                model_path = "./llama-2-7b-chat.Q2_K.gguf"
                 
                 # Create the model
                 model = Llama(model_path=model_path)
@@ -45,4 +45,4 @@ def generate_response():
         return jsonify({"Error": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=80, debug=True)
