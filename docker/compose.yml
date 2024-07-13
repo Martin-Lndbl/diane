@@ -1,0 +1,22 @@
+name: diane
+services:
+  tts:
+    build: 
+      context: ./tts
+    networks:
+      VPNet:
+        ipv4_address: 172.19.0.51
+    restart: unless-stopped
+  llama:
+    build: 
+      context: ./llama
+    networks:
+      VPNet:
+        ipv4_address: 172.19.0.50
+    restart: unless-stopped
+
+networks:
+  VPNet:
+    ipam:
+     config:
+       - subnet: 172.19.0.0/16

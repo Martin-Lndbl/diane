@@ -1,0 +1,22 @@
+#! /bin/sh
+
+docker start llama || \
+docker run \
+  --name llama \
+  --net VPNet \
+  --ip 172.19.0.52 \
+  --restart unless-stopped \
+  --detach \
+  llama
+
+# docker run \
+#   --name tts \
+#   --net VPNet \
+#   --ip 172.19.0.53 \
+#   --tty \
+#   --interactive \
+#   --entrypoint /bin/bash \
+#   tts
+
+# python3 TTS/server/server.py --list_models #To get the list of available models
+# python3 TTS/server/server.py --model_name tts_models/en/vctk/vits
