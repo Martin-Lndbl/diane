@@ -14,16 +14,12 @@ def generate_response():
         data = request.get_json()
 
         # Check if the required fields are present in the JSON data
-        if 'system_message' in data and 'user_message' in data and 'max_tokens' in data:
-            system_message = data['system_message']
+        if 'user_message' in data and 'max_tokens' in data:
             user_message = data['user_message']
             max_tokens = int(data['max_tokens'])
 
             # Prompt creation
-            prompt = f"""<s>[INST] <<SYS>>
-            {system_message}
-            <</SYS>>
-            {user_message} [/INST]"""
+            prompt = user_message
             
             # Create the model if it was not previously created
             if model is None:
