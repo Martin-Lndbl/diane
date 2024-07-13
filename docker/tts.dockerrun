@@ -1,0 +1,22 @@
+#! /bin/sh
+
+docker start tts || \
+docker run \
+  --name tts \
+  --net VPNet \
+  --ip 172.19.0.53 \
+  --restart unless-stopped \
+  --detach \
+  tts
+
+# docker run \
+#   --name tts \
+#   --net VPNet \
+#   --ip 172.19.0.53 \
+#   --tty \
+#   --interactive \
+#   --entrypoint /bin/bash \
+#   tts
+
+# python3 TTS/server/server.py --list_models #To get the list of available models
+# python3 TTS/server/server.py --model_name tts_models/en/vctk/vits

@@ -1,0 +1,3 @@
+[submodule "TTS"]
+	path = TTS
+	url = git@github.com:Martin-Lndbl/TTS.git
