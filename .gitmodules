@@ -4,3 +4,6 @@
 [submodule "llama3"]
 	path = llama3
 	url = https://github.com/meta-llama/llama3.git
+[submodule "fast-llama"]
+	path = fast-llama
+	url = https://github.com/CoderLSF/fast-llama.git
