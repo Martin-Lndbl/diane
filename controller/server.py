@@ -7,7 +7,7 @@ app = Flask(__name__)
 def generate():
     data = request.json
     prompt = data.get('prompt')
-    speaker_id = data.get('speaker_id', '336')
+    speaker_id = data.get('speaker_id', 'p336')
     if not prompt:
         return jsonify({"error": "No prompt provided"}), 400
 
@@ -35,5 +35,5 @@ def generate():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=80)
 
