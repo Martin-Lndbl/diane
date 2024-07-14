@@ -16,7 +16,9 @@
           devShell = pkgs.mkShell {
 
             nativeBuildInputs = with pkgs; [
-              
+              pyright
+              python311Packages.requests
+              python311Packages.flask
             ];
 
             shellHook = ''

@@ -2,7 +2,9 @@ name: diane
 services:
   controller:
     build: 
-      context: ./diane
+      context: ./controller
+    volumes:
+      - ../controller:/app:ro
     networks:
       VPNet:
         ipv4_address: 172.19.0.32
