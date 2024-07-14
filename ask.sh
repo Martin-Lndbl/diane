@@ -3,16 +3,16 @@
 # Prompt is the first command line argument
 PROMPT=$1
 
-# Default model
-SPEAKER_ID=diane
+# Default speaker_id
+SPEAKER_ID=p336
 if [ $# -ge 2 ]; then
   SPEAKER_ID=$2
 fi
 
-# Default speaker_id
-SPEAKER_ID=p336
+# Default model
+MODEL=diane
 if [ $# -ge 3 ]; then
-  SPEAKER_ID=$3
+  MODEL=$3
 fi
 
 # Check if prompt is provided
@@ -24,7 +24,7 @@ fi
 # Execute the curl command
 curl -X POST http://172.19.0.32/generate \
      -H "Content-Type: application/json" \
-     -d "{\"prompt\": \"$PROMPT\", \"speaker_id\": \"$SPEAKER_ID\"}" \
+     -d "{\"prompt\": \"$PROMPT\", \"speaker_id\": \"$SPEAKER_ID\", \"model\": \"$MODEL\"}" \
      --output /tmp/output.wav &&
 
 aplay < /tmp/output.wav

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Audio</title>
+</head>
+<body>
+    <h1>Generate Audio</h1>
+    <form id="generateForm">
+        <label for="prompt">Prompt:</label><br>
+        <input type="text" id="prompt" name="prompt" required><br><br>
+        <label for="speaker_id">Speaker ID:</label><br>
+        <input type="text" id="speaker_id" name="speaker_id" placeholder="336"><br><br>
+        <input type="submit" value="Generate">
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('generateForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const prompt = document.getElementById('prompt').value;
+            const speaker_id = document.getElementById('speaker_id').value || '336';
+
+            const response = await fetch('/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ prompt, speaker_id })
+            });
+
+            if (response.ok) {
+                const blob = await response.blob();
+                const url = URL.createObjectURL(blob);
+                
+                // Automatically play the audio
+                const audio = new Audio(url);
+                audio.play();
+
+                document.getElementById('result').innerHTML = "Audio is playing...";
+            } else {
+                const error = await response.json();
+                document.getElementById('result').innerHTML = `Error: ${error.error}`;
+            }
+        });
+    </script>
+</body>
+</html>
