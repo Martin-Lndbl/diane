@@ -16,7 +16,7 @@ services:
       - ./ollama:/root/.ollama
     restart: unless-stopped
     environment:
-      OLLAMA_HOST: "127.0.0.1:80"
+      OLLAMA_HOST: "0.0.0.0:80"
   # llama2:
   #   build: 
   #     context: ./llama2
