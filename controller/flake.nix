@@ -16,10 +16,10 @@
           devShell = pkgs.mkShell {
 
             nativeBuildInputs = with pkgs; [
+              
             ];
 
             shellHook = ''
-              [ ! -f .env ] || export $(grep -v '^#' .env | xargs)
             '';
           };
         }
