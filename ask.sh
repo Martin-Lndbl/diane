@@ -3,11 +3,16 @@
 # Prompt is the first command line argument
 PROMPT=$1
 
-# Default speaker_id
-SPEAKER_ID=336
-
+# Default model
+SPEAKER_ID=diane
 if [ $# -ge 2 ]; then
   SPEAKER_ID=$2
+fi
+
+# Default speaker_id
+SPEAKER_ID=p336
+if [ $# -ge 3 ]; then
+  SPEAKER_ID=$3
 fi
 
 # Check if prompt is provided
