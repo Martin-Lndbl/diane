@@ -7,14 +7,31 @@ services:
       VPNet:
         ipv4_address: 172.19.0.51
     restart: unless-stopped
-  llama:
-    build: 
-      context: ./llama
+  ollama:
+    image: ollama/ollama
     networks:
       VPNet:
         ipv4_address: 172.19.0.50
+    volumes:
+      - ollama:/root/.ollama
     restart: unless-stopped
-
+  # llama2:
+  #   build: 
+  #     context: ./llama2
+  #   networks:
+  #     VPNet:
+  #       ipv4_address: 172.19.0.50
+  #   restart: unless-stopped
+  # fast-llama:
+  #   build: 
+  #     context: ./fast-llama
+  #   networks:
+  #     VPNet:
+  #       ipv4_address: 172.19.0.50
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ../models:/models:ro
+  
 networks:
   VPNet:
     name: VPNet
