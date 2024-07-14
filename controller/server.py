@@ -14,7 +14,7 @@ def generate():
 
     try:
         # llama3 requests
-        llm_params = {"model": "llama3", "prompt": prompt, "stream": False}
+        llm_params = {"model": model, "prompt": prompt, "stream": False}
         llm_response = requests.post('http://172.19.0.33/api/generate', json=llm_params)
         llm_response.raise_for_status()
 
