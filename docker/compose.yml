@@ -1,22 +1,29 @@
 name: diane
 services:
-  tts:
+  controller:
     build: 
-      context: ./tts
+      context: ./diane
     networks:
       VPNet:
-        ipv4_address: 172.19.0.51
+        ipv4_address: 172.19.0.32
     restart: unless-stopped
   ollama:
     image: ollama/ollama
     networks:
       VPNet:
-        ipv4_address: 172.19.0.50
+        ipv4_address: 172.19.0.33
     volumes:
       - ./ollama:/root/.ollama
     restart: unless-stopped
     environment:
       OLLAMA_HOST: "0.0.0.0:80"
+  tts:
+    build:
+      context: ./tts
+    networks:
+      VPNet:
+        ipv4_address: 172.19.0.34
+    restart: unless-stopped
   # llama2:
   #   build: 
   #     context: ./llama2

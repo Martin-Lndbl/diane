@@ -8,6 +8,6 @@ WORKDIR /app
 COPY ../../controller/server.py /app/server.py
 
 # Install the needed packages
-RUN pip install Flask
+RUN pip install requests
 
 CMD ["python", "server.py"]
